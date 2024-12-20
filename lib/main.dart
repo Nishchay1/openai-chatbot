@@ -1,3 +1,4 @@
+import 'package:chatbot/screens/aristotle_screen.dart';
 import 'package:chatbot/screens/buddha_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomeScreen(),
       routes: {
-        '/buddhascreen': (context) => const BuddhaScreen(),
-        '/homescreen': (context) => const HomeScreen(),
+        '/buddha_screen': (context) => const BuddhaScreen(),
+        '/home_screen': (context) => const HomeScreen(),
+        '/aristotle_screen': (context) => const AristotleScreen(),
       },
     );
   }

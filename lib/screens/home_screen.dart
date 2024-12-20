@@ -16,9 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text("Select Figure"),
           centerTitle: true,
         ),
-        body: ElevatedButton(onPressed: (){
-          Navigator.pushNamed(context, '/buddhascreen');
-        }, child: Text("Buddha"))
+        body: Column(
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, '/buddha_screen');
+            }, child: Text("Buddha")),
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, '/aristotle_screen');
+            }, child: Text("Aristotle")),
+          ],
+        )
     );
   }
 }
