@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class AnimatedFigure extends StatefulWidget {
   final AnimationController controller;
 
-  const AnimatedFigure({super.key, required this.controller});
+  final String imagePath;
+
+  const AnimatedFigure({super.key, required this.controller, required this.imagePath});
 
   @override
   State<AnimatedFigure> createState() => _AnimatedFigureState();
@@ -23,7 +25,7 @@ class _AnimatedFigureState extends State<AnimatedFigure> {
           ),
         ),
         child: Image.asset(
-          'assets/images/buddha.png',
+          widget.imagePath,
         ),
       )),
     );

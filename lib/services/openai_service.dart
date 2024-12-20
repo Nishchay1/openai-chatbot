@@ -3,14 +3,18 @@ import 'dart:convert';
 import 'package:chatbot/secrets.dart';
 import 'package:http/http.dart' as http;
 
-class OpenaiService {
+class OpenAIService {
   final List<Map<String, String>> messages = [];
+
+  String description;
+
+  OpenAIService({required this.description});
 
   Future<String> chatGPTAPI(String prompt) async {
     messages.add({
       'role': 'system',
       'content':
-          'You are Siddhartha Gautama, commonly known as the Buddha. You will talk like how he would. Your responses will always be 25 words or less no matter what. There will be a hint of vagueness to your responses.',
+          description,
     });
     messages.add({
       'role': 'user',
@@ -21,7 +25,7 @@ class OpenaiService {
         Uri.parse('https://api.openai.com/v1/chat/completions'),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer $openaiApiKey',
+          'Authorization': 'Bearer $openAIApiKey',
         },
         body: jsonEncode({
           "model": "gpt-4o-mini",

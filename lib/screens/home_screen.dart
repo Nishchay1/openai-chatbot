@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Select Character"),
+          title: const Text("Select Figure"),
           centerTitle: true,
         ),
         body: ElevatedButton(onPressed: (){
