@@ -24,6 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(onPressed: (){
               Navigator.pushNamed(context, '/aristotle_screen');
             }, child: Text("Aristotle")),
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, '/confucius_screen');
+            }, child: Text("Confucius")),
           ],
         )
     );

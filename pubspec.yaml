@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/buddha.png
     - assets/images/aristotle.png
+    - assets/images/confucius.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
