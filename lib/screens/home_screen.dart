@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  var screenList = ['/buddha_screen', '/aristotle_screen', '/confucius_screen'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,19 +16,20 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text("Select Figure"),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            ElevatedButton(onPressed: (){
-              Navigator.pushNamed(context, '/buddha_screen');
-            }, child: Text("Buddha")),
-            ElevatedButton(onPressed: (){
-              Navigator.pushNamed(context, '/aristotle_screen');
-            }, child: Text("Aristotle")),
-            ElevatedButton(onPressed: (){
-              Navigator.pushNamed(context, '/confucius_screen');
-            }, child: Text("Confucius")),
-          ],
-        )
-    );
+        body: Center(
+            child: SizedBox(
+                height: 500,
+                child: CarouselView(
+                  onTap: (index) {
+                    Navigator.pushNamed(context, screenList[index]);
+                  },
+                  itemSnapping: true,
+                  itemExtent: MediaQuery.sizeOf(context).width - 40,
+                  children: [
+                    Image.asset('assets/images/buddha.png'),
+                    Image.asset('assets/images/aristotle.png'),
+                    Image.asset('assets/images/confucius.png'),
+                  ],
+                ))));
   }
 }
