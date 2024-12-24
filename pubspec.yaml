@@ -64,6 +64,7 @@ flutter:
     - assets/images/aristotle.png
     - assets/images/confucius.png
     - assets/images/lincoln.png
+    - assets/images/caesar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Image.asset('assets/images/aristotle.png',),
                       Image.asset('assets/images/confucius.png',),
                       Image.asset('assets/images/lincoln.png'),
+                      Image.asset('assets/images/caesar.png'),
                     ],
                   )),
         ));
