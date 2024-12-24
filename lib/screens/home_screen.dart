@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var screenList = ['/buddha_screen', '/aristotle_screen', '/confucius_screen'];
+  var screenList = ['/buddha_screen', '/aristotle_screen', '/confucius_screen', '/lincoln_screen'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shrinkExtent: 250,
                     children: [
                       Image.asset('assets/images/buddha.png',),
-                      Image.asset(width: 50,height: 50,'assets/images/aristotle.png',),
+                      Image.asset('assets/images/aristotle.png',),
                       Image.asset('assets/images/confucius.png',),
+                      Image.asset('assets/images/lincoln.png'),
                     ],
                   )),
         ));
