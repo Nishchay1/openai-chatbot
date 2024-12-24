@@ -15,7 +15,7 @@ class _AnimatedFigureState extends State<AnimatedFigure> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.black,
       child: Center(
           child: ScaleTransition(
         scale: Tween<double>(begin: 0.8, end: 1.0).animate(

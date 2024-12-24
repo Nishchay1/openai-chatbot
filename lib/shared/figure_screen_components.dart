@@ -4,12 +4,16 @@ import 'package:chatbot/shared/animated_figure.dart';
 
 class FigureScreenComponents extends StatefulWidget {
   final String description;
-  
+
   final String figureImagePath;
 
   final String figureName;
 
-  const FigureScreenComponents({super.key, required this.description, required this.figureImagePath, required this.figureName});
+  const FigureScreenComponents(
+      {super.key,
+      required this.description,
+      required this.figureImagePath,
+      required this.figureName});
 
   @override
   State<FigureScreenComponents> createState() => _FigureScreenComponentsState();
@@ -17,7 +21,6 @@ class FigureScreenComponents extends StatefulWidget {
 
 class _FigureScreenComponentsState extends State<FigureScreenComponents>
     with SingleTickerProviderStateMixin {
-
   late final OpenAIService openAIService;
   final TextEditingController _messageController = TextEditingController();
 
@@ -33,12 +36,12 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
 
   int _animationCount = 0;
 
+  final FocusNode messageFocusNode = FocusNode();
+
   @override
   void initState() {
     super.initState();
-    openAIService = OpenAIService(
-      description:
-          widget.description);
+    openAIService = OpenAIService(description: widget.description);
 
     _controller =
         AnimationController(duration: Duration(milliseconds: 800), vsync: this);
@@ -79,6 +82,8 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
         appBar: AppBar(
           title: Text("Ask ${widget.figureName}"),
           centerTitle: true,
+          backgroundColor: Colors.black,
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
         ),
         body: Stack(
           children: <Widget>[
@@ -88,7 +93,8 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                 opacity: figureVisible ? 1.0 : 0.0,
                 duration: animationDuration,
                 child: AnimatedFigure(
-                  controller: _controller, imagePath: widget.figureImagePath,
+                  controller: _controller,
+                  imagePath: widget.figureImagePath,
                 ),
               ),
             ),
@@ -114,49 +120,65 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
 
   Widget _maintext() {
     return Container(
-        color: Colors.white,
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              generatedContent == null
-                  ? "What is it that you seek?"
-                  : generatedContent!,
-              style: TextStyle(fontSize: 20),
+        color: Colors.black,
+        child: SafeArea(
+          child: Center(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Text(
+                        generatedContent == null
+                            ? "What is it that you seek?"
+                            : generatedContent!,
+                        style: TextStyle(fontSize: 64, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  TextButton(onPressed: showMessageInput, child: Text("Ask"))
+                ],
+              ),
             ),
-            TextButton(onPressed: showMessageInput, child: Text("Ask"))
-          ],
-        )));
+          )),
+        ));
   }
 
   Widget _messageInput() {
     return Container(
-        color: Colors.white,
-        child: Center(
-          child: Padding(
+        color: Colors.black,
+        child: SafeArea(
+          child: Center(
+              child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10.0,
-              vertical: 24,
             ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      cursorColor: Colors.white,
+                      maxLines: null,
+                      style: TextStyle(fontSize: 64, color: Colors.white),
+                      focusNode: messageFocusNode,
+                      controller: _messageController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Enter...",
+                        hintStyle: TextStyle(color: Colors.grey),
                       ),
-                      hintText: "Enter message...",
                     ),
                   ),
-                ),
-                IconButton(onPressed: sendMsg, icon: Icon(Icons.send))
-              ],
+                  IconButton(onPressed: sendMsg, icon: Icon(Icons.send))
+                ],
+              ),
             ),
-          ),
+          )),
         ));
   }
 
@@ -164,6 +186,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
     setState(() => messageInputVisible = true);
     setState(() => maintextVisible = false);
     setState(() => figureVisible = false);
+    FocusScope.of(context).requestFocus(messageFocusNode);
   }
 
   void showMainText() {
@@ -180,7 +203,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
 
   void sendMsg() async {
     generatedContent = null;
-    FocusManager.instance.primaryFocus?.unfocus();
+    FocusScope.of(context).unfocus();
     showFigure();
     _startAnimation();
     String msg = _messageController.text;

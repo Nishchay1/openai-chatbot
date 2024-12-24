@@ -15,21 +15,26 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: const Text("Select Figure"),
           centerTitle: true,
+          backgroundColor: Colors.black,
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
         ),
-        body: Center(
-            child: SizedBox(
-                height: 500,
-                child: CarouselView(
-                  onTap: (index) {
-                    Navigator.pushNamed(context, screenList[index]);
-                  },
-                  itemSnapping: true,
-                  itemExtent: MediaQuery.sizeOf(context).width - 40,
-                  children: [
-                    Image.asset('assets/images/buddha.png'),
-                    Image.asset('assets/images/aristotle.png'),
-                    Image.asset('assets/images/confucius.png'),
-                  ],
-                ))));
+        body: Container(
+          color: Colors.black,
+          child: Center(
+                  child: CarouselView(
+                    backgroundColor: Colors.black,
+                    onTap: (index) {
+                      Navigator.pushNamed(context, screenList[index]);
+                    },
+                    itemSnapping: true,
+                    itemExtent: MediaQuery.sizeOf(context).width - 40,
+                    shrinkExtent: 250,
+                    children: [
+                      Image.asset('assets/images/buddha.png',),
+                      Image.asset(width: 50,height: 50,'assets/images/aristotle.png',),
+                      Image.asset('assets/images/confucius.png',),
+                    ],
+                  )),
+        ));
   }
 }
