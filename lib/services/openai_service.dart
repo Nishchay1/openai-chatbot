@@ -30,11 +30,12 @@ class OpenAIService {
         body: jsonEncode({
           "model": "gpt-4o-mini",
           "messages": messages,
+          "max_completion_tokens": 100,
         }),
       );
       if (res.statusCode == 200) {
         String content =
-            jsonDecode(res.body)['choices'][0]['message']['content'];
+            jsonDecode(utf8.decode(res.bodyBytes))['choices'][0]['message']['content'];
         content = content.trim();
         return content;
       }
