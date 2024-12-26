@@ -131,15 +131,19 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Text(
-                        generatedContent == null
-                            ? "What is it that you seek?"
-                            : generatedContent!,
-                        style: TextStyle(fontSize: 64, color: Colors.white),
-                      ),
-                    ),
+                        child: RichText(
+                      text: TextSpan(
+                          text: generatedContent == null
+                              ? "What is it that you seek?"
+                              : generatedContent!,
+                          style: TextStyle(fontSize: 48, color: Colors.white)),
+                    )),
                   ),
-                  TextButton(onPressed: showMessageInput, child: Text("Ask"))
+                  ElevatedButton(
+                      onPressed: showMessageInput,
+                      child: Text(
+                          style: TextStyle(fontSize: 24, color: Colors.black),
+                          "Ask"))
                 ],
               ),
             ),
@@ -163,8 +167,9 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                   Expanded(
                     child: TextField(
                       cursorColor: Colors.white,
+                      maxLength: 150,
                       maxLines: null,
-                      style: TextStyle(fontSize: 64, color: Colors.white),
+                      style: TextStyle(fontSize: 48, color: Colors.white),
                       focusNode: messageFocusNode,
                       controller: _messageController,
                       decoration: InputDecoration(
@@ -174,7 +179,10 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                       ),
                     ),
                   ),
-                  IconButton(onPressed: sendMsg, icon: Icon(Icons.send))
+                  IconButton(
+                      iconSize: 36,
+                      onPressed: sendMsg,
+                      icon: Icon(color: Colors.white, Icons.send))
                 ],
               ),
             ),
