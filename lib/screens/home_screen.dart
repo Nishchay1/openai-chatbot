@@ -19,11 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   var figureInfo = [
-    'Siddhartha Gautama, most commonly referred to as the Buddha, was a wandering ascetic and religious teacher who lived in South Asia, during the 6th or 5th century BCE and founded Buddhism. According to Buddhist legends, he was born in Lumbini, in what is now Nepal, to royal parents of the Shakya clan, but renounced his home life to live as a wandering ascetic. After leading a life of mendicancy, asceticism, and meditation, he attained nirvana at Bodh Gaya in what is now India. \n- Wikipedia',
-    'Aristotle was an Ancient Greek philosopher and polymath. His writings cover a broad range of subjects spanning the natural sciences, philosophy, linguistics, economics, politics, psychology, and the arts. As the founder of the Peripatetic school of philosophy in the Lyceum in Athens, he began the wider Aristotelian tradition that followed, which set the groundwork for the development of modern science. \n- Wikipedia',
-    'Confucius, born Kong Qiu (孔丘), was a Chinese philosopher of the Spring and Autumn period who is traditionally considered the paragon of Chinese sages. Much of the shared cultural heritage of the Sinosphere originates in the philosophy and teachings of Confucius. His philosophical teachings, called Confucianism, emphasized personal and governmental morality, harmonious social relationships, righteousness, kindness, sincerity, and a ruler\'s responsibilities to lead by virtue. \n- Wikipedia',
-    'Abraham Lincoln was the 16th president of the United States, serving from 1861 until his assassination in 1865. He led the United States through the American Civil War, defending the nation as a constitutional union, defeating the Confederacy, playing a major role in the abolition of slavery, expanding the power of the federal government, and modernizing the U.S. economy. - Wikipedia',
-    'Gaius Julius Caesar was a Roman general and statesman. A member of the First Triumvirate, Caesar led the Roman armies in the Gallic Wars before defeating his political rival Pompey in a civil war, and subsequently became dictator from 49 BC until his assassination in 44 BC. He played a critical role in the events that led to the demise of the Roman Republic and the rise of the Roman Empire. \n- Wikipedia',
+    'Siddhartha Gautama, most commonly referred to as the Buddha, was a wandering ascetic and religious teacher who lived in South Asia, during the 6th or 5th century BCE and founded Buddhism. According to Buddhist legends, he was born in Lumbini, in what is now Nepal, to royal parents of the Shakya clan, but renounced his home life to live as a wandering ascetic. After leading a life of mendicancy, asceticism, and meditation, he attained nirvana at Bodh Gaya in what is now India. \n\n- Wikipedia',
+    'Aristotle was an Ancient Greek philosopher and polymath. His writings cover a broad range of subjects spanning the natural sciences, philosophy, linguistics, economics, politics, psychology, and the arts. As the founder of the Peripatetic school of philosophy in the Lyceum in Athens, he began the wider Aristotelian tradition that followed, which set the groundwork for the development of modern science. \n\n- Wikipedia',
+    'Confucius, born Kong Qiu (孔丘), was a Chinese philosopher of the Spring and Autumn period who is traditionally considered the paragon of Chinese sages. Much of the shared cultural heritage of the Sinosphere originates in the philosophy and teachings of Confucius. His philosophical teachings, called Confucianism, emphasized personal and governmental morality, harmonious social relationships, righteousness, kindness, sincerity, and a ruler\'s responsibilities to lead by virtue. \n\n- Wikipedia',
+    'Abraham Lincoln was the 16th president of the United States, serving from 1861 until his assassination in 1865. He led the United States through the American Civil War, defending the nation as a constitutional union, defeating the Confederacy, playing a major role in the abolition of slavery, expanding the power of the federal government, and modernizing the U.S. economy. \n\n - Wikipedia',
+    'Gaius Julius Caesar was a Roman general and statesman. A member of the First Triumvirate, Caesar led the Roman armies in the Gallic Wars before defeating his political rival Pompey in a civil war, and subsequently became dictator from 49 BC until his assassination in 44 BC. He played a critical role in the events that led to the demise of the Roman Republic and the rise of the Roman Empire. \n\n- Wikipedia',
   ];
 
   var heroTagList = [
@@ -47,8 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/lincoln.png',
     'assets/images/caesar.png'
   ];
+
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () => showDisclaimer());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Select Figure"),
@@ -66,11 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => FigureSelectScreen(
-                            heroTag: heroTagList[index],
-                            imagePath: imageList[index],
-                            screenName: screenList[index],
-                            figureName: figureName[index],
-                            figureInfo: figureInfo[index],)));
+                              heroTag: heroTagList[index],
+                              imagePath: imageList[index],
+                              screenName: screenList[index],
+                              figureName: figureName[index],
+                              figureInfo: figureInfo[index],
+                            )));
                   },
                   child: Center(
                     child: FigureSelectCard(
@@ -80,5 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
             }),
       ),
     );
+  }
+
+  void showDisclaimer() {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Disclaimer"),
+              content: SingleChildScrollView(
+                child: Text(
+                    "The following content has been automatically generated by an AI system and should be used for informational purposes only. We cannot guarantee the accuracy, completeness, or timeliness of the information provided. Any actions taken based on this content are at your own risk. We recommend seeking qualified expertise or conducting further research to validate and supplement the information provided."),
+              ),
+              actions: [TextButton(onPressed: ()=>Navigator.of(context).pop(), child: Text("I Understand"))],
+            ));
   }
 }
