@@ -14,20 +14,19 @@ class AnimatedFigure extends StatefulWidget {
 class _AnimatedFigureState extends State<AnimatedFigure> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Center(
-          child: ScaleTransition(
-        scale: Tween<double>(begin: 0.8, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.controller,
-            curve: Curves.easeInOut,
-          ),
+    return Center(
+        child: ScaleTransition(
+      scale: Tween<double>(begin: 0.8, end: 1.0).animate(
+        CurvedAnimation(
+          parent: widget.controller,
+          curve: Curves.easeInOut,
         ),
+      ),
+      child: ClipOval(
         child: Image.asset(
           widget.imagePath,
         ),
-      )),
-    );
+      ),
+    ));
   }
 }

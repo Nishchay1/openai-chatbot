@@ -82,8 +82,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
         appBar: AppBar(
           title: Text("Ask ${widget.figureName}"),
           centerTitle: true,
-          backgroundColor: Colors.black,
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 24),
         ),
         body: Stack(
           children: <Widget>[
@@ -120,7 +119,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
 
   Widget _maintext() {
     return Container(
-        color: Colors.black,
+        color: Colors.white,
         child: SafeArea(
           child: Center(
               child: Padding(
@@ -136,13 +135,13 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                           text: generatedContent == null
                               ? "What is it that you seek?"
                               : generatedContent!,
-                          style: TextStyle(fontSize: 48, color: Colors.white)),
+                          style: TextStyle(color: Colors.black, fontSize: 48)),
                     )),
                   ),
                   ElevatedButton(
                       onPressed: showMessageInput,
                       child: Text(
-                          style: TextStyle(fontSize: 24, color: Colors.black),
+                          style: TextStyle(fontSize: 24),
                           "Ask"))
                 ],
               ),
@@ -153,7 +152,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
 
   Widget _messageInput() {
     return Container(
-        color: Colors.black,
+        color: Colors.white,
         child: SafeArea(
           child: Center(
               child: Padding(
@@ -166,10 +165,9 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                 children: [
                   Expanded(
                     child: TextField(
-                      cursorColor: Colors.white,
                       maxLength: 150,
                       maxLines: null,
-                      style: TextStyle(fontSize: 48, color: Colors.white),
+                      style: TextStyle(fontSize: 48),
                       focusNode: messageFocusNode,
                       controller: _messageController,
                       decoration: InputDecoration(
@@ -182,7 +180,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                   IconButton(
                       iconSize: 36,
                       onPressed: sendMsg,
-                      icon: Icon(color: Colors.white, Icons.send))
+                      icon: Icon(Icons.send))
                 ],
               ),
             ),
