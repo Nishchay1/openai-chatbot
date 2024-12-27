@@ -177,10 +177,9 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                       ),
                     ),
                   ),
-                  IconButton(
-                      iconSize: 36,
+                  ElevatedButton(
                       onPressed: sendMsg,
-                      icon: Icon(Icons.send))
+                      child: Text("Send", style: TextStyle(fontSize: 18),))
                 ],
               ),
             ),
