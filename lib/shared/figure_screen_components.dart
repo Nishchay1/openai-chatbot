@@ -172,7 +172,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                       controller: _messageController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Enter...",
+                        hintText: "Type your question...",
                         hintStyle: TextStyle(color: Colors.grey),
                       ),
                     ),
