@@ -98,19 +98,19 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
               ),
             ),
             IgnorePointer(
-              ignoring: !messageInputVisible,
-              child: AnimatedOpacity(
-                opacity: messageInputVisible ? 1.0 : 0.0,
-                duration: animationDuration,
-                child: _messageInput(),
-              ),
-            ),
-            IgnorePointer(
               ignoring: !maintextVisible,
               child: AnimatedOpacity(
                 opacity: maintextVisible ? 1.0 : 0.0,
                 duration: animationDuration,
                 child: _maintext(),
+              ),
+            ),
+            IgnorePointer(
+              ignoring: !messageInputVisible,
+              child: AnimatedOpacity(
+                opacity: messageInputVisible ? 1.0 : 0.0,
+                duration: animationDuration,
+                child: _messageInput(),
               ),
             ),
           ],
@@ -133,7 +133,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                         child: RichText(
                       text: TextSpan(
                           text: generatedContent == null
-                              ? "What is it that you seek?"
+                              ? ""
                               : generatedContent!,
                           style: TextStyle(color: Colors.black, fontSize: 48)),
                     )),
@@ -165,6 +165,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                 children: [
                   Expanded(
                     child: TextField(
+                      autofocus: true,
                       maxLength: 150,
                       maxLines: null,
                       style: TextStyle(fontSize: 48),
