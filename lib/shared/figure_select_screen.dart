@@ -47,13 +47,15 @@ class _FigureSelectScreenState extends State<FigureSelectScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Center(
-                  child: SizedBox(
-                    width: 100,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () =>
-                          {Navigator.pushNamed(context, widget.screenName)},
-                      child: Text(style: TextStyle(fontSize: 18), "Select"),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            {Navigator.pushNamed(context, widget.screenName)},
+                        child: Text(style: TextStyle(fontSize: 18), "Select"),
+                      ),
                     ),
                   ),
                 ),

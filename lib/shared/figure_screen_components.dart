@@ -135,7 +135,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                           text: generatedContent == null
                               ? ""
                               : generatedContent!,
-                          style: TextStyle(color: Colors.black, fontSize: 48)),
+                          style: TextStyle(color: Colors.black, fontSize: 28)),
                     )),
                   ),
                   ElevatedButton(
@@ -168,7 +168,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                       autofocus: true,
                       maxLength: 150,
                       maxLines: null,
-                      style: TextStyle(fontSize: 48),
+                      style: TextStyle(fontSize: 28),
                       focusNode: messageFocusNode,
                       controller: _messageController,
                       decoration: InputDecoration(
@@ -178,9 +178,12 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                      onPressed: sendMsg,
-                      child: Text("Send", style: TextStyle(fontSize: 18),))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: ElevatedButton(
+                        onPressed: sendMsg,
+                        child: Text("Send", style: TextStyle(fontSize: 18),)),
+                  )
                 ],
               ),
             ),

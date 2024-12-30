@@ -2,7 +2,9 @@ import 'package:chatbot/screens/aristotle_screen.dart';
 import 'package:chatbot/screens/buddha_screen.dart';
 import 'package:chatbot/screens/caesar_screen.dart';
 import 'package:chatbot/screens/confucius_screen.dart';
+import 'package:chatbot/screens/curie_screen.dart';
 import 'package:chatbot/screens/lincoln_screen.dart';
+import 'package:chatbot/screens/mlk_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
         '/confucius_screen': (context) => const ConfuciusScreen(),
         '/lincoln_screen': (context) => const LincolnScreen(),
         '/caesar_screen': (context) => const CaesarScreen(),
+        '/curie_screen': (context) => const CurieScreen(),
+        '/mlk_screen': (context) => const MlkScreen(),
       },
     );
   }
