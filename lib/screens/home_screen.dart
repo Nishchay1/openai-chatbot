@@ -59,9 +59,22 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/mlk.png'
   ];
 
+  final PageController _pageController = PageController(viewportFraction: 0.95);
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        _currentPage = _pageController.page!.round();
+      });
+    });
+    Future.delayed(Duration.zero, () => showDisclaimer());
+  }
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () => showDisclaimer());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Select Figure"),
@@ -69,29 +82,36 @@ class _HomeScreenState extends State<HomeScreen> {
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 24),
       ),
       body: SafeArea(
-        child: PageView.builder(
-            controller: PageController(viewportFraction: 0.65),
-            pageSnapping: false,
-            scrollDirection: Axis.vertical,
-            itemCount: imageList.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => FigureSelectScreen(
-                              heroTag: heroTagList[index],
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                  controller: _pageController,
+                  pageSnapping: false,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: imageList.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => FigureSelectScreen(
+                                    heroTag: heroTagList[index],
+                                    imagePath: imageList[index],
+                                    screenName: screenList[index],
+                                    figureName: figureName[index],
+                                    figureInfo: figureInfo[index],
+                                  )));
+                        },
+                        child: Center(
+                          child: FigureSelectCard(
                               imagePath: imageList[index],
-                              screenName: screenList[index],
-                              figureName: figureName[index],
-                              figureInfo: figureInfo[index],
-                            )));
-                  },
-                  child: Center(
-                    child: FigureSelectCard(
-                        imagePath: imageList[index],
-                        heroTag: heroTagList[index]),
-                  ));
-            }),
+                              heroTag: heroTagList[index]),
+                        ));
+                  }),
+            ),
+                Expanded(child: Text(figureName[_currentPage]))
+          ],
+        ),
       ),
     );
   }
