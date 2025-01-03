@@ -5,6 +5,7 @@ import 'package:chatbot/screens/confucius_screen.dart';
 import 'package:chatbot/screens/curie_screen.dart';
 import 'package:chatbot/screens/lincoln_screen.dart';
 import 'package:chatbot/screens/mlk_screen.dart';
+import 'package:chatbot/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ask Historical Figures',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: lightMode,
       home: const HomeScreen(),
       routes: {
         '/buddha_screen': (context) => const BuddhaScreen(),

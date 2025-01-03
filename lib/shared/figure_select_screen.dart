@@ -1,3 +1,4 @@
+import 'package:chatbot/theme/button.dart';
 import 'package:flutter/material.dart';
 
 class FigureSelectScreen extends StatefulWidget {
@@ -52,9 +53,10 @@ class _FigureSelectScreenState extends State<FigureSelectScreen> {
                     child: SizedBox(
                       height: 50,
                       child: ElevatedButton(
+                        style: primaryButton,
                         onPressed: () =>
                             {Navigator.pushNamed(context, widget.screenName)},
-                        child: Text(style: TextStyle(fontSize: 18), "Select"),
+                        child: Text("Select"),
                       ),
                     ),
                   ),

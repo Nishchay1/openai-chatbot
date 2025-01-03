@@ -1,4 +1,5 @@
 import 'package:chatbot/services/openai_service.dart';
+import 'package:chatbot/theme/button.dart';
 import 'package:flutter/material.dart';
 import 'package:chatbot/shared/animated_figure.dart';
 
@@ -139,6 +140,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                     )),
                   ),
                   ElevatedButton(
+                    style: primaryButton,
                       onPressed: showMessageInput,
                       child: Text(
                           style: TextStyle(fontSize: 24),
@@ -181,6 +183,7 @@ class _FigureScreenComponentsState extends State<FigureScreenComponents>
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: ElevatedButton(
+                      style: primaryButton,
                         onPressed: sendMsg,
                         child: Text("Send", style: TextStyle(fontSize: 18),)),
                   )
