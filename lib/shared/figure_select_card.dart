@@ -32,7 +32,7 @@ class _FigureSelectCardState extends State<FigureSelectCard> {
           ]),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Theme.of(context).colorScheme.surface,
           shape: BoxShape.circle,
         ),
         width: 290,
